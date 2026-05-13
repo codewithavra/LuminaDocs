@@ -9,11 +9,11 @@ import {
 
 import type { Route } from "./+types/root"
 import "./app.css"
-import { clerkMiddleware, rootAuthLoader } from '@clerk/react-router/server'
+import { clerkMiddleware, rootAuthLoader } from "@clerk/react-router/server"
+import { ClerkProvider } from "@clerk/react-router"
 
 export const middleware: Route.MiddlewareFunction[] = [clerkMiddleware()]
 export const loader = (args: Route.LoaderArgs) => rootAuthLoader(args)
-
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -33,8 +33,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
   )
 }
 
-export default function App() {
-  return <Outlet />
+export default function App({ loaderData }: Route.ComponentProps) {
+  return (
+    <ClerkProvider
+      loaderData={loaderData}
+      publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY}
+    >
+      <Outlet />
+    </ClerkProvider>
+  )
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
