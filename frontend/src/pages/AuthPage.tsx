@@ -2,7 +2,7 @@
 
 const AuthPage = () => {
   return (
-    <div>AuthPage</div>
+    <div className="h-svh w-screen bg-background text-foreground">AuthPage</div>
   )
 }
 

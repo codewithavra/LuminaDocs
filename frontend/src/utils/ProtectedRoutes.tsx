@@ -1,11 +1,12 @@
 
 import Loader from "@/components/Loader";
-import { useAuth } from "@clerk/react-router"
+import { useAuth } from "@clerk/react";
+
 import React from "react"
 import { Navigate } from "react-router"
 
 const ProtectedRoutes = ({ children }: { children: React.ReactNode }) => {
-  const useauth = useAuth()
+  const useauth = useAuth();
   const isSignedin = useauth.isSignedIn
   const isLoaded = useauth.isLoaded
 

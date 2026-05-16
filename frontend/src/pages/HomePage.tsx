@@ -1,7 +1,7 @@
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <div className="h-svh w-screen bg-background text-foreground">HomePage</div>
   )
 }
 

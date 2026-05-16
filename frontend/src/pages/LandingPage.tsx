@@ -2,7 +2,7 @@
 
 const LandingPage = () => {
   return (
-    <div>LandingPage</div>
+    <div className="h-svh w-screen bg-background text-foreground">LandingPage</div>
   )
 }
 

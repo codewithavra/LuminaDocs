@@ -1,4 +1,5 @@
 import AuthPage from "@/pages/AuthPage"
+import ErrorPage from "@/pages/ErrorPage";
 import HomePage from "@/pages/HomePage"
 import LandingPage from "@/pages/LandingPage"
 import ProtectedRoutes from "@/utils/ProtectedRoutes"
@@ -17,6 +18,7 @@ const AppRouter = () => {
           </ProtectedRoutes>
         }
       />
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
   )
 }
