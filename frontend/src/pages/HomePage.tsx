@@ -1,7 +1,56 @@
+import { ModeToggle } from "@/components/mode-toggle"
+import Navbar from "@/components/Navbar"
+import { Input } from "@/components/ui/input"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+import { UserButton } from "@clerk/react"
+import { IoIosAddCircleOutline } from "react-icons/io"
 
 const HomePage = () => {
   return (
-    <div className="h-svh w-screen bg-background text-foreground">HomePage</div>
+    <div className="flex h-svh w-screen items-center justify-center bg-background text-foreground">
+      <div className="flex h-full w-full max-w-6xl flex-col items-center justify-between border-x">
+        <div className="h-fit w-full">
+          <Navbar>
+            <div className="flex h-fit w-fit items-center justify-center gap-4">
+              <ModeToggle />
+              <UserButton />
+            </div>
+          </Navbar>
+        </div>
+        <div className="flex h-full w-full flex-col items-center justify-end p-3 pb-4 md:p-4">
+          <div className="flex h-15 w-full items-center justify-center gap-2">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger className="h-full w-fit">
+                  <label
+                    className="flex aspect-square h-[70%] cursor-pointer items-center justify-center rounded-full text-muted-foreground"
+                    htmlFor="fileUpload"
+                  >
+                    <IoIosAddCircleOutline className="h-[95%] w-auto" />
+                  </label>
+                  <input
+                    type="file"
+                    accept=".pdf"
+                    id="fileUpload"
+                    className="hidden"
+                  />
+                </TooltipTrigger>
+                <TooltipContent>Add PDF</TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <Input
+              placeholder="ask question"
+              className="min-h-15 rounded-3xl border-2 px-4"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
