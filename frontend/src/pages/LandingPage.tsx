@@ -20,7 +20,7 @@ const LandingPage = () => {
           </Navbar>
         </div>
         <div className="flex h-full w-full items-center justify-center">
-          <Button onClick={() => navigate("/auth")}>Get Started</Button>
+          <Button variant="default" onClick={() => navigate("/auth")}>Get Started</Button>
         </div>
         <div className="h-fit w-full">
           <Footer />
