@@ -1,5 +1,12 @@
+
+/**
+ * Node modules
+ */
 import { Queue } from 'bullmq';
 
+/**
+ * Queue
+ */
 const myQueue = new Queue('foo');
 
 async function addJobs() {
