@@ -16,9 +16,9 @@ const HomePage = () => {
   const [rmode, setRmode] = useState<boolean>(false)
   return (
     <div
-      className={`flex h-svh w-screen items-center justify-center text-foreground dark:bg-background ${rmode ? "bg-amber-50" : "bg-background"}`}
+      className={`flex h-svh w-screen items-center justify-center text-foreground bg-background`}
     >
-      <div className="flex h-full w-full max-w-6xl flex-col items-center justify-between border-x">
+      <div className={`flex h-full w-full max-w-6xl flex-col items-center justify-between border-x ${rmode ? "bg-amber-50 dark:bg-stone-800" : "bg-background"}`}>
         <div className="h-fit w-full">
           <Navbar>
             <div className="flex h-fit w-fit items-center justify-center gap-4">
