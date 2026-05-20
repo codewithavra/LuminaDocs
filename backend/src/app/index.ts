@@ -9,6 +9,7 @@ import cookieParser from "cookie-parser";
  */
 import { env } from "../config/env";
 import { upload } from "../lib/multer";
+import { addJobs } from "../lib/queue";
 
 /**
  * Express application
@@ -42,7 +43,8 @@ app.get("/", (req,res)=>{
     return res.json({ status : "All Good"});
 })
 
-app.post("/upload/pdf", upload.single('pdf'), (req,res) =>{
-    return res.json({ message : "uploaded", file : req.file})
+app.post("/upload/pdf", upload.single('pdf'), async(req,res)=>{
+  await addJobs(req)
+  return res.json({message : 'uploaded'})
 }
 )

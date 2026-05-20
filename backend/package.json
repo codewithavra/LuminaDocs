@@ -4,7 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun --watch ./src/server.ts"
+    "dev": "bun --watch ./src/server.ts",
+    "dev-worker": "bun --watch ./src/lib/worker.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",
@@ -18,6 +19,9 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@langchain/core": "^1.1.47",
+    "@langchain/openai": "^1.4.6",
+    "@langchain/qdrant": "^1.0.3",
     "bullmq": "^5.76.9",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",

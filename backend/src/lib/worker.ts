@@ -2,16 +2,24 @@
  * Node modules
  */
 import { Worker } from 'bullmq';
-import IORedis from 'ioredis';
 
-const connection = new IORedis({ maxRetriesPerRequest: null });
+const worker  = new Worker('file-upload-queue',
+  async (job)=> {
+    const data = JSON.parse(job.data)
 
-const worker = new Worker(
-  'foo',
-  async job => {
-    // Will print { foo: 'bar'} for the first job
-    // and { qux: 'baz' } for the second.
-    console.log(job.data);
-  },
-  { connection },
+    /**
+     * Path : data.path,
+     * read the pdf from path,
+     * chunk the pdf
+     * call the openai embedding model for every chunk
+     * store the chunk in quadrant db
+     */
+  },{
+    concurrency : 100,
+    connection : {
+      host : 'localhost',
+      port : 6379
+    }
+  }
 );
+
