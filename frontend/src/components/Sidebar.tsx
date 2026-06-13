@@ -18,7 +18,7 @@ import { UserButton, useUser } from "@clerk/react"
 const Sidebar = ({
   newChatFunc,
 }: {
-  newChatFunc: React.Dispatch<React.SetStateAction<boolean>>
+  newChatFunc?: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   const [isClosed, setIsClosed] = useState<boolean>(true)
   const user = useUser().user

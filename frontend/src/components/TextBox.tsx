@@ -6,12 +6,13 @@ import Footer from "./Footer"
  */
 import { FaPlus, FaArrowUp } from "react-icons/fa6"
 import SelectPersona from "./SelectPersona"
+import InputPdf from "./InputPdf"
 
 const TextBox = () => {
   return (
     <div className="fixed bottom-0 left-1/2 z-30 flex h-fit w-full max-w-2xl -translate-x-1/2 flex-col items-center justify-center p-3">
       {/* Input Area */}
-      <div className="flex h-fit w-full flex-col items-center justify-center rounded-3xl bg-card border">
+      <div className="flex h-fit w-full flex-col items-center justify-center rounded-3xl border bg-card">
         {/* Text Area */}
         <div className="h-fit w-full pt-2">
           <input type="text" className="size-full p-3 outline-none" />
@@ -21,9 +22,13 @@ const TextBox = () => {
 
         <div className="flex h-fit w-full items-center justify-between p-3">
           {/* Take pdf as input */}
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-500">
+          <label
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-green-500 cursor-pointer hover:bg-green-700 duration-100 transition-colors ease-in"
+            htmlFor="fileUpload"
+          >
             <FaPlus />
-          </div>
+          </label>
+          <InputPdf />
           {/* Persona Selector */}
           <div className="ml-auto">
             <SelectPersona />
