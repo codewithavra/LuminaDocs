@@ -1,6 +1,7 @@
 const Footer = () => {
   return (
-    <p className="fixed bottom-0 left-1/2 -translate-x-1/2 text-xs text-center w-dvw pb-2 text-muted-foreground z-10">Lumina is AI and can make mistakes. Please double-check responses.</p>
+    <div className="hidden text-xs w-full text-muted-foreground md:flex md:justify-center md:items-center mt-2"><p>
+      Lumina is AI and can make mistakes. Please double-check responses.</p></div>
   )
 }
 

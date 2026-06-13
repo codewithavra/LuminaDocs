@@ -88,6 +88,7 @@
  */
 import Footer from '@/components/Footer'
 import Sidebar from '@/components/Sidebar'
+import TextBox from '@/components/TextBox'
 
 const HomePage = () => {
   return (
@@ -95,9 +96,7 @@ const HomePage = () => {
       {/* Sidebar */}
       <Sidebar/>
       {/* Text Box */}
-
-      {/* Footer */}
-      <Footer />
+      <TextBox />
     </div>
   )
 }
