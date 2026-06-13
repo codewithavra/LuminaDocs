@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cookie&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -130,4 +131,10 @@
   html {
     @apply font-sans;
     }
+}
+
+.logo-text{
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 500;
+  font-style: normal;
 }

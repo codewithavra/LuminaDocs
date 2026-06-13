@@ -1,8 +1,6 @@
 const Footer = () => {
   return (
-    <div className="flex h-fit w-full flex-col items-center justify-center p-4 text-muted-foreground font-semibold text-xs sm:text-sm border-t">
-      <p>made with ♥ by @<a href="https://codewithavra.vercel.app" className=" underline underline-offset-2 ">codewithavra</a></p>
-    </div>
+    <p className="fixed bottom-0 left-1/2 -translate-x-1/2 text-xs text-center w-dvw pb-2 text-muted-foreground z-10">Lumina is AI and can make mistakes. Please double-check responses.</p>
   )
 }
 
