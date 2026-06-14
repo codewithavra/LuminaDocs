@@ -10,7 +10,7 @@ import InputPdf from "./InputPdf"
 
 const TextBox = () => {
   return (
-    <div className="fixed bottom-0 left-1/2 z-30 flex h-fit w-full max-w-2xl -translate-x-1/2 flex-col items-center justify-center p-3">
+    <div className="fixed bottom-0 left-1/2 z-30 flex h-fit w-full max-w-3xl -translate-x-1/2 flex-col items-center justify-center p-3 bg-background">
       {/* Input Area */}
       <div className="flex h-fit w-full flex-col items-center justify-center rounded-3xl border bg-card">
         {/* Text Area */}
@@ -35,7 +35,7 @@ const TextBox = () => {
           </div>
 
           {/* Submit Button */}
-          <button className="flex h-8 w-8 items-center justify-center rounded-full bg-background transition-colors duration-50 ease-in-out hover:bg-orange-600">
+          <button className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground text-background transition-colors duration-50 ease-in-out hover:bg-orange-600">
             <FaArrowUp />
           </button>
         </div>

@@ -1,3 +1,8 @@
+
+/**
+ * @description This is the Sidebar Component
+ */
+
 /**
  * Node Imports
  */
@@ -14,6 +19,7 @@ import { CgCloseR } from "react-icons/cg"
  * Components
  */
 import { UserButton, useUser } from "@clerk/react"
+import NewChat from "./NewChat"
 
 const Sidebar = ({
   newChatFunc,
@@ -81,7 +87,7 @@ const Sidebar = ({
           </div>
 
           {/* New Chat section */}
-
+          <NewChat />
           {/* History Section */}
 
           {/* Bottom Section */}
