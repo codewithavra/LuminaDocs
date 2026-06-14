@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "dev": "bun --watch ./src/server.ts",
-    "dev-worker": "bun --watch ./src/lib/worker.ts"
+    "dev-worker": "bun --watch ./src/lib/worker.ts",
+    "generate": "drizzle-kit generate",
+    "migrate":  "drizzle-kit migrate"
   },
   "devDependencies": {
     "@types/bun": "latest",
