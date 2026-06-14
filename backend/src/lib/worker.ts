@@ -48,7 +48,7 @@ const worker  = new Worker('file-upload-queue',
     console.log(`[worker] Connecting to Qdrant at ${env.QDRANT_URL}`)
     const vectorStore = await QdrantVectorStore.fromExistingCollection(embedding,{
       url : env.QDRANT_URL,
-      collectionName : "LuminaDocs",
+      collectionName : "Lumina",
     })
 
     /**
