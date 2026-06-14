@@ -19,17 +19,19 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@langchain/community": "^1.1.28",
-    "@langchain/core": "^1.1.47",
-    "@langchain/openai": "^1.4.6",
-    "@langchain/qdrant": "^1.0.3",
+    "@langchain/community": "^1.1.29",
+    "@langchain/core": "^1.1.49",
+    "@langchain/google": "^0.1.12",
+    "@langchain/pgvector": "^0.1.0",
     "@langchain/textsplitters": "^1.0.1",
+    "@upstash/redis": "^1.38.0",
     "bullmq": "^5.76.9",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "multer": "^2.1.1",
-    "pdf-parse": "^2.4.5"
+    "pdf-parse": "^2.4.5",
+    "pg": "^8.21.0"
   }
 }
