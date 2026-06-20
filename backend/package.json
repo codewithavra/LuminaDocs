@@ -4,7 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun ./src/index"
+    "dev": "bun ./src/index",
+    "worker" : "bun ./src/queue/worker"
   },
   "devDependencies": {
     "@types/bun": "latest",

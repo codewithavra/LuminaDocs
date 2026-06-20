@@ -8,7 +8,7 @@ import IORedis from "ioredis";
  */
 import { env } from "./env";
 
-const ioRedisConnection = new IORedis(env.REDIS_URL!, {
+export const ioRedisConnection = new IORedis(env.REDIS_URL!, {
   maxRetriesPerRequest: null,
   enableReadyCheck: false,
   lazyConnect: true,
