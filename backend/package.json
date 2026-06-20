@@ -4,13 +4,15 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun ./src/index",
-    "worker" : "bun ./src/queue/worker"
+    "dev": "bun --watch ./src/index",
+    "worker": "bun --watch ./src/queue/worker",
+    "start": "bun ./src/index"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
+    "@types/multer": "^2.1.0",
     "@types/node": "^26.0.0"
   },
   "peerDependencies": {
@@ -25,6 +27,8 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "ioredis": "^5.11.1"
+    "ioredis": "^5.11.1",
+    "mongoose": "^9.7.1",
+    "multer": "^2.2.0"
   }
 }

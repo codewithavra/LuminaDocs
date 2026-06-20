@@ -1,10 +1,19 @@
 import "dotenv/config";
 
+const requiredEnv = (name: string): string => {
+  const value = process.env[name];
+  if (!value) {
+    throw new Error(`Missing required environment variable: ${name}`);
+  }
+  return value;
+};
+
 export const env = {
-  CORS_ORIGIN: process.env.CORS_ORIGIN,
-  PORT: process.env.PORT,
-  NODE_ENV: process.env.NODE_ENV,
-  GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
-  POSTGRESQL_URI: process.env.POSTGRESQL_URI,
-  REDIS_URL: process.env.REDIS_URL,
+  CORS_ORIGIN: requiredEnv("CORS_ORIGIN"),
+  PORT: requiredEnv("PORT"),
+  NODE_ENV: requiredEnv("NODE_ENV"),
+  GOOGLE_API_KEY: requiredEnv("GOOGLE_API_KEY"),
+  POSTGRESQL_URI: requiredEnv("POSTGRESQL_URI"),
+  REDIS_URL: requiredEnv("REDIS_URL"),
+  MONGODB_URI: requiredEnv("MONGODB_URI"),
 };
