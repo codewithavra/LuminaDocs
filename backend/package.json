@@ -4,41 +4,21 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun --watch ./src/server.ts",
-    "dev-worker": "bun --watch ./src/lib/worker.ts",
-    "generate": "drizzle-kit generate",
-    "migrate": "drizzle-kit migrate"
+    "dev" : "bun ./src/index"
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "@types/cookie-parser": "^1.4.10",
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.6",
-    "@types/multer": "^2.1.0",
-    "@types/node": "^25.9.3",
-    "drizzle-kit": "^0.31.10",
-    "tsx": "^4.22.4"
+    "@types/node": "^26.0.0"
   },
   "peerDependencies": {
-    "typescript": "^5.9.3"
+    "typescript": "^5"
   },
   "dependencies": {
-    "@langchain/community": "^1.1.29",
-    "@langchain/core": "^1.1.49",
-    "@langchain/google": "^0.1.12",
-    "@langchain/pgvector": "^0.1.0",
+    "@google/generative-ai": "^0.24.1",
+    "@langchain/core": "^1.2.0",
+    "@langchain/google-genai": "^2.2.0",
     "@langchain/textsplitters": "^1.0.1",
-    "@neondatabase/serverless": "^1.1.0",
-    "@upstash/redis": "^1.38.0",
-    "bullmq": "^5.78.1",
-    "cookie-parser": "^1.4.7",
-    "cors": "^2.8.6",
     "dotenv": "^17.4.2",
-    "drizzle-orm": "^0.45.2",
-    "express": "^5.2.1",
-    "ioredis": "^5.11.1",
-    "multer": "^2.1.1",
-    "pdf-parse": "^2.4.5",
-    "pg": "^8.21.0"
+    "express": "^5.2.1"
   }
 }
