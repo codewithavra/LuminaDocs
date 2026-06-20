@@ -10,10 +10,20 @@ const requiredEnv = (name: string): string => {
 
 export const env = {
   CORS_ORIGIN: requiredEnv("CORS_ORIGIN"),
+
   PORT: requiredEnv("PORT"),
+
   NODE_ENV: requiredEnv("NODE_ENV"),
+
   GOOGLE_API_KEY: requiredEnv("GOOGLE_API_KEY"),
-  POSTGRESQL_URI: requiredEnv("POSTGRESQL_URI"),
+
   REDIS_URL: requiredEnv("REDIS_URL"),
+
   MONGODB_URI: requiredEnv("MONGODB_URI"),
+
+  DB_NAME: requiredEnv("DB_NAME"),
+
+  COLLECTION_NAME: requiredEnv("COLLECTION_NAME"),
+  
+  INDEX_NAME: requiredEnv("INDEX_NAME"),
 };
