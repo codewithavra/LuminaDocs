@@ -1,3 +1,6 @@
+/**
+ * Node Imports
+ */
 import "dotenv/config";
 
 const requiredEnv = (name: string): string => {
