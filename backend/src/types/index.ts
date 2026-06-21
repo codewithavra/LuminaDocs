@@ -7,7 +7,7 @@ export interface ChatMessage {
 export interface ChatSession {
   id: string;
   title: string;
-  userId: string;           // Clerk user ID (passed from frontend header)
+  userId: string; // Clerk user ID (passed from frontend header)
   persona: PersonaKey;
   messages: ChatMessage[];
   createdAt: Date;
@@ -27,7 +27,12 @@ export interface Document {
   embedding?: number[];
 }
 
-export type PersonaKey = "default" | "academic" | "friendly" | "concise" | "technical";
+export type PersonaKey =
+  | "default"
+  | "academic"
+  | "friendly"
+  | "concise"
+  | "technical";
 
 export interface Persona {
   key: PersonaKey;
@@ -55,4 +60,14 @@ export interface ApiResponse<T = unknown> {
   data?: T;
   error?: string;
   message?: string;
+}
+
+export interface ParsedText {
+  text: string;
+  metadata: {
+    fileName: string;
+    source: string;
+    fileType: "pdf" | "txt" | "docx";
+    charCount: number;
+  };
 }
