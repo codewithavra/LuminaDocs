@@ -10,6 +10,6 @@ export const splitTextIntoChunks = async (
     chunkOverlap: number = 200 
 )=>{
     const splitter = new RecursiveCharacterTextSplitter({ chunkSize, chunkOverlap })
-    const result = await splitter.splitText(text)
-    return result
+    const chunks = await splitter.splitText(text)
+    return chunks
 }

@@ -2,10 +2,14 @@
  * Other Imports
  */
 
-import { getVectorStore } from "./fileParser.service";
+import { fileParser } from "./fileParser.service";
 import { embedText,embedTexts } from "./embedding.service";
+import { splitTextIntoChunks } from "./textSplitter.service";
+import { vectorStore } from "./vectorStore.service";
 export {
-    getVectorStore,
+    fileParser,
+    splitTextIntoChunks,
     embedText,
-    embedTexts
+    embedTexts,
+    vectorStore
 }
