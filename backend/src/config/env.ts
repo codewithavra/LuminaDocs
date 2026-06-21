@@ -16,14 +16,15 @@ export const env = {
   NODE_ENV: requiredEnv("NODE_ENV"),
 
   GOOGLE_API_KEY: requiredEnv("GOOGLE_API_KEY"),
+  GROQ_API_KEY:requiredEnv("GROQ_API_KEY"),
 
   REDIS_URL: requiredEnv("REDIS_URL"),
-
   MONGODB_URI: requiredEnv("MONGODB_URI"),
 
   DB_NAME: requiredEnv("DB_NAME"),
-
   COLLECTION_NAME: requiredEnv("COLLECTION_NAME"),
-  
   INDEX_NAME: requiredEnv("INDEX_NAME"),
+
+  EMBEDDING_MODEL :requiredEnv("EMBEDDING_MODEL"),
+  TEXT_MODEL : requiredEnv("TEXT_MODEL")
 };

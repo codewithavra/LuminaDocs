@@ -5,8 +5,15 @@
 import { env } from "./env"
 import { ioRedisConnection } from "./redis"
 import { connectDB } from "./db"
+import { upload } from "./multer"
+import { embeddings } from "./gemini"
+
+
+
 export {
     env,
     ioRedisConnection,
-    connectDB
+    connectDB,
+    upload,
+    embeddings
 }
