@@ -1,67 +1,6 @@
-export interface ChatMessage {
-  role: "user" | "assistant";
-  content: string;
-  timestamp: Date;
-}
+import type { Document, Types } from "mongoose";
 
-export interface ChatSession {
-  id: string;
-  title: string;
-  userId: string; // Clerk user ID (passed from frontend header)
-  persona: PersonaKey;
-  messages: ChatMessage[];
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-export interface Document {
-  id: string;
-  content: string;
-  metadata: {
-    source: string;
-    fileType: "pdf" | "txt" | "docx";
-    chunkIndex: number;
-    totalChunks: number;
-    uploadedAt: string;
-  };
-  embedding?: number[];
-}
-
-export type PersonaKey =
-  | "default"
-  | "academic"
-  | "friendly"
-  | "concise"
-  | "technical";
-
-export interface Persona {
-  key: PersonaKey;
-  label: string;
-  description: string;
-  systemPrompt: string;
-}
-
-export interface IngestionJob {
-  filePath: string;
-  fileName: string;
-  fileType: "pdf" | "txt" | "docx";
-  userId: string;
-}
-
-export interface RAGQueryInput {
-  question: string;
-  sessionId: string;
-  userId: string;
-  persona: PersonaKey;
-}
-
-export interface ApiResponse<T = unknown> {
-  success: boolean;
-  data?: T;
-  error?: string;
-  message?: string;
-}
-
+export type DocumentStatus = "queued" | "ready" | "processing" | "failed";
 export interface ParsedText {
   text: string;
   metadata: {
@@ -70,4 +9,73 @@ export interface ParsedText {
     fileType: "pdf" | "txt" | "docx";
     charCount: number;
   };
+}
+export type PersonaKey =
+  | "default"
+  | "academic"
+  | "friendly"
+  | "expert"
+  | "socratic"
+  | "concise"
+  | "technical";
+
+export interface IChat extends Document {
+  userId: string;
+  title: string;
+  persona: PersonaKey;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface IMessageSource {
+  documentId: Types.ObjectId;
+  filename: string;
+  text: string;
+  score: number;
+}
+
+export interface IChatMessage extends Document {
+  userId: string;
+  chatId: Types.ObjectId;
+  role: "user" | "assistant";
+  content: string;
+  sources: IMessageSource[];
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface IDocument extends Document {
+  userId: string;
+  fileName: string;
+  originalName: string;
+  mimeType: string;
+  size: number;
+  status: DocumentStatus;
+  error?: string;
+  chunkCount: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface IDocumentChunk extends Document {
+  userId: string;
+  documentId: Types.ObjectId;
+  fileName: string;
+  text: string;
+  embedding: number[];
+  chunkIndex: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface ChunkDocument {
+  text: string;
+  embedding: number[];       // number[] guaranteed — undefined slots are filtered below
+  userId: string;
+  documentId: string;
+  fileName: string;
+  fileType: string;
+  chunkIndex: number;
+  source: string;
+  charCount: number;
 }

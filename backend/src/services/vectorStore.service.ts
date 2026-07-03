@@ -5,8 +5,8 @@ import { MongoDBAtlasVectorSearch } from "@langchain/mongodb"
 /**
  * Other Imports
  */
-import { embeddings, env } from "../config"
-import { getMongoDBClient } from "../config/db"
+import { embeddings, env, getMongoDBClient } from "../config"
+
 
 
 export const vectorStore = async ()=>{

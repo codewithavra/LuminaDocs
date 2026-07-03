@@ -1,37 +1,16 @@
-/**
- * Node Imports
- */
 import mongoose from "mongoose";
+import { env } from "./env.js";
 import { MongoClient } from "mongodb";
-/**
- * Other Imports
- */
 
-import { env } from "./env";
-
-/**
- * Mongoose connection — for chat sessions + messages
- */
-export const connectDB = async (): Promise<void> => {
+export const connectDB = async () => {
   try {
-    const connectionInstance = await mongoose.connect(env.MONGODB_URI, {
-      dbName: env.DB_NAME,
-    });
-    mongoose.connection.on("connected", () => {
-      console.log(`Mongoose connected to MongoDB`);
-      console.log(
-        `MongoDB Connection host : ${connectionInstance.connection.host}`,
-      );
-    });
-    mongoose.connection.on("disconnected", () => {
-      console.warn(`[DB] Mongoose Disconnected`);
-    });
-    mongoose.connection.on("error", (err) => {
-      console.error(`MongoDB Connection Error : ${err.message}`);
-    });
-  } catch (error: any) {
-    console.error(`Failed to connect to MongoDB : ${error.message}`);
-    throw error;
+    const connectionInstance = await mongoose.connect(env.MONGODB_URI);
+
+    console.log(`MongoDB connected successfully`);
+    console.log(`MongoDB Host : ${connectionInstance.connection.host}`);
+  } catch (err: any) {
+    console.error(`MongoDB connection error : ${err.message}`);
+    process.exit(1)
   }
 };
 
@@ -42,7 +21,7 @@ let mongoClient : MongoClient | null = null
 
 export const getMongoDBClient = async (): Promise<MongoClient>=>{
     if(!mongoClient) {
-        mongoClient = new MongoClient(env.MONGODB_URI);
+        mongoClient = new MongoClient (env.MONGODB_URI);
         await mongoClient.connect()
         console.log(`MongoClient is Connected for Vector Search`);
     }

@@ -1,21 +1,17 @@
-/**
- * Other imports
- */
-
-import { env } from "./env"
-import { ioRedisConnection } from "./redis"
-import { connectDB } from "./db"
-import { upload } from "./multer"
-import { embeddings } from "./gemini"
-import { llm } from "./groq"
-
+import { env } from "./env.js";
+import { connectDB,getMongoDBClient,disconnectDB } from "./db.js";
+import { embeddings } from "./gemini.js";
+import { ioRedisConnection } from "./redis.js";
+import { upload } from "./multer.js";
+import { llm } from "./gorq.js";
 
 export {
     env,
-    ioRedisConnection,
     connectDB,
-    upload,
     embeddings,
-    llm
+    ioRedisConnection,
+    upload,
+    llm,
+    disconnectDB,
+    getMongoDBClient
 }
-
