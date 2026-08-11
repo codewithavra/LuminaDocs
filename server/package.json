@@ -5,7 +5,7 @@
   "type": "module",
   "main": "./src/server.js",
   "scripts": {
-    "start" : "node ./src/server.js",
+    "start": "node ./src/server.js",
     "dev": "node --watch ./src/server.js",
     "dev-worker": "node --watch ./src/worker/ingest.worker.js"
   },
@@ -23,6 +23,7 @@
     "express": "^5.2.1",
     "ioredis": "^6.0.0",
     "langchain": "^1.5.5",
+    "mongodb": "^7.5.0",
     "mongoose": "^9.9.2",
     "multer": "^2.2.0",
     "pdf-parse": "^2.4.5"

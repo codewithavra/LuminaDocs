@@ -4,8 +4,10 @@ const documentSchema = new mongoose.Schema(
   {
     userId: { type: String, required: true, index: true }, // Clerk userId
     originalName: { type: String, required: true },
-    storedFileName: { type: String, required: true },
-    filePath: { type: String, required: true },
+    gridfsId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+    },
     status: {
       type: String,
       enum: ["queued", "processing", "ready", "failed"],
