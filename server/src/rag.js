@@ -16,7 +16,7 @@ import { vectorStore } from "./config/index.js";
 // ==========================================
 // LOAD THE PDF DOCUMENT
 // ==========================================
-async function loadPdfPages(filePath) {
+export async function loadPdfPages(filePath) {
   try {
     const parser = new PDFParse({
       data: new Uint8Array(readFileSync(filePath)),
@@ -43,7 +43,7 @@ async function loadPdfPages(filePath) {
 // CHUNK THE DOCUMENT
 // ==========================================
 
-async function textSplitting(document) {
+export async function textSplitting(document) {
   try {
     const splitter = new RecursiveCharacterTextSplitter({ 
       chunkSize: 500, 
@@ -90,37 +90,6 @@ export async function deleteDocumentVectors(documentId) {
   }
 }
 
-// ==========================================
-// INDEXING PIPELINE
-// ==========================================
-
-export async function indexindPdf(filePath) {
-  try {
-    const absolutePath = path.resolve(filePath);
-
-    if (!fs.existsSync(absolutePath)) {
-      throw new Error(`File not found at path: ${absolutePath}`);
-    }
-    console.log(`✅ Processing PDF from path: ${absolutePath}`);
-
-    // 1. Load PDF
-    const docs = await loadPdfPages(absolutePath);
-    console.log(`✅ Document loaded successfully (${docs.length} pages found)`);
-
-    // 2. Split into Chunks
-    const texts = await textSplitting(docs);
-    console.log(`✅ Texts splitted successfully (${texts.length} chunks created)`);
-
-    // 3. Generate Embeddings & Upsert to Pinecone
-    await vectorStore.addDocuments(texts);
-    console.log(`✅ Indexed ${texts.length} chunks into Pinecone successfully.`);
-
-    return { success: true, totalChunks: texts.length };
-  } catch (error) {
-    console.error(`❌ Error in indexindPdf: ${error.message}`);
-    throw error;
-  }
-}
 
 
 // stage-2

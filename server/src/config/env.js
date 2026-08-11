@@ -28,6 +28,8 @@ export const env = {
   INDEX_NAME: requiredEnv("INDEX_NAME"),
 
   CLERK_PUBLISHABLE_KEY: requiredEnv('CLERK_PUBLISHABLE_KEY'),
-  CLERK_SECRET_KEY: requiredEnv('CLERK_SECRET_KEY')
+  CLERK_SECRET_KEY: requiredEnv('CLERK_SECRET_KEY'),
+
+  DB_NAME:requiredEnv('DB_NAME')
 
 };

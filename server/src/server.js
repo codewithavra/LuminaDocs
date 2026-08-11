@@ -1,8 +1,6 @@
 import { app } from "./app.js"
 import { env,connectDB } from "./config/index.js"
 
-import { indexindPdf } from "./rag.js"
-
 
 connectDB()
 .then(()=>{
