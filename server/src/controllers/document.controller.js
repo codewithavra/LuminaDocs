@@ -1,7 +1,9 @@
-import fs from "fs";
+import mongoose from "mongoose";
+import { Readable } from "stream";
 import { ConversationModel, DocumentModel, MessageModel } from "../model/index.js";
 import { ingestionQueue } from "../queue/ingest.queue.js";
 import { deleteDocumentVectors } from "../rag.js";
+import { getGridFSBucket } from "../config/gridfs.js";
 
 export async function uploadDocument(req, res) {
   try {
@@ -11,18 +13,32 @@ export async function uploadDocument(req, res) {
       return res.status(400).json({ error: "No file uploaded" });
     }
 
+    // Stream the uploaded buffer into GridFS instead of writing to local
+    // disk. This is what the ingest worker will later read back from -
+    // no filesystem path is ever passed around.
+    const bucket = getGridFSBucket();
+    const uploadStream = bucket.openUploadStream(req.file.originalname, {
+      metadata: { userId },
+    });
+
+    await new Promise((resolve, reject) => {
+      Readable.from(req.file.buffer)
+        .pipe(uploadStream)
+        .on("error", reject)
+        .on("finish", resolve);
+    });
+
     const document = await DocumentModel.create({
       userId,
       originalName: req.file.originalname,
-      storedFileName: req.file.filename,
-      filePath: req.file.path,
+      gridfsId: uploadStream.id,
       status: "queued",
       progress: 0,
     });
 
     const job = await ingestionQueue.add("ingest-pdf", {
       documentId: document._id.toString(),
-      filePath: req.file.path,
+      gridfsId: uploadStream.id.toString(),
       userId,
     });
 
@@ -84,9 +100,13 @@ export async function deleteDocument(req, res) {
     // 1. remove vectors from Pinecone
     await deleteDocumentVectors(document._id.toString());
 
-    // 2. remove the file from disk if it's still there
-    if (fs.existsSync(document.filePath)) {
-      fs.unlink(document.filePath, () => {});
+    // 2. remove the PDF from GridFS if it's still there
+    if (document.gridfsId) {
+      await getGridFSBucket()
+        .delete(new mongoose.Types.ObjectId(document.gridfsId))
+        .catch(() => {
+          // already deleted (e.g. worker cleaned it up after ingest) - fine to ignore
+        });
     }
 
     // 3. cascade delete: conversations + messages tied to this document
