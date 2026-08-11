@@ -1,6 +1,7 @@
 import fs from "fs";
 import { ConversationModel, DocumentModel, MessageModel } from "../model/index.js";
 import { ingestionQueue } from "../queue/ingest.queue.js";
+import { deleteDocumentVectors } from "../rag.js";
 
 export async function uploadDocument(req, res) {
   try {

@@ -12,7 +12,9 @@ import { embedAndStore, loadPdfPages, textSplitting } from "../rag.js";
 
 // worker is a separate process, so it needs its own Mongo connection
 
-await mongoose.connect(env.MONGODB_URI, { dbName: env.DB_NAME });
+// Use the database encoded in MONGODB_URI, matching the API server. Supplying
+// DB_NAME here previously made the worker update a different database.
+await mongoose.connect(env.MONGODB_URI);
 console.log("✅ Worker connected to MongoDB");
 
 async function setProgress(job, documentId, progress, status) {
