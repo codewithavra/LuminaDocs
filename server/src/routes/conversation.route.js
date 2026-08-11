@@ -7,7 +7,7 @@ import { createConversation, deleteConversation, getMessages, listConversations 
 
 export const conversationRouter = Router();
  
-conversationRouter.use(requireAuth());
+conversationRouter.use(requireAuth);
  
 conversationRouter.post("/", createConversation);
 conversationRouter.get("/", listConversations);

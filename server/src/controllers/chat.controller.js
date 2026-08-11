@@ -1,6 +1,7 @@
 import { vectorStore, llm } from "../config/index.js";
-import { ConversationModel } from "../models/conversation.model.js";
-import { MessageModel } from "../models/message.model.js";
+import { ConversationModel } from "../model/conversation.model.js";
+import { MessageModel } from "../model/message.model.js";
+
 
 export async function sendMessage(req, res) {
   try {

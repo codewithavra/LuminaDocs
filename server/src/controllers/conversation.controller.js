@@ -1,6 +1,5 @@
-import { ConversationModel } from "../models/conversation.model.js";
-import { MessageModel } from "../models/message.model.js";
-import { DocumentModel } from "../models/document.model.js";
+import { ConversationModel,DocumentModel,MessageModel } from "../model/index.js";
+
 
 export async function createConversation(req, res) {
   try {

@@ -5,7 +5,7 @@ import { upload } from "../config/multer.js";
  
 export const documentRouter = Router();
  
-documentRouter.use(requireAuth());
+documentRouter.use(requireAuth);
  
 documentRouter.post("/", upload.single("file"), uploadDocument);
 documentRouter.get("/", listDocuments);

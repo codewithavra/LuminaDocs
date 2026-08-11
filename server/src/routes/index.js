@@ -1,7 +1,7 @@
-import { chatRouter } from "./chat.route";
+import { chatRouter } from "./chat.route.js";
 import { conversationRouter
- } from "./conversation.route";
-import { documentRouter } from "./document.route";
+ } from "./conversation.route.js";
+import { documentRouter } from "./document.route.js";
 
 export {
     chatRouter,
