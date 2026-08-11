@@ -1,2 +1,13 @@
-import { indexindPdf } from "./rag.js"
-indexindPdf("./uploads/sample.pdf")
+import { app } from "./app.js"
+import { env,connectDB } from "./config/index.js"
+
+
+connectDB()
+.then(()=>{
+    app.listen(env.PORT, ()=>{
+        console.log(`✅App is Running @ http://localhost:${env.PORT}`)
+    })
+})
+.catch((err)=>{
+    console.error(`❌MongoDB connection error : ${err.message}`);
+})

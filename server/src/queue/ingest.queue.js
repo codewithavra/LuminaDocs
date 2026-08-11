@@ -1,5 +1,5 @@
 import {Queue} from "bullmq"
-import { ioRedisConnection } from "../config.js"
+import { ioRedisConnection } from "../config/index.js"
 
 export const ingestionQueue = new Queue(
     "ingestionQueue",

@@ -9,26 +9,27 @@ const requiredEnv = (name)=> {
 };
 
 export const env = {
-  BETTER_AUTH_SECRET: requiredEnv("BETTER_AUTH_SECRET"),
-  BETTER_AUTH_URL: requiredEnv("BETTER_AUTH_URL"),
-
   CORS_ORIGIN: requiredEnv("CORS_ORIGIN"),
 
   PORT: requiredEnv("PORT"),
 
   NODE_ENV: requiredEnv("NODE_ENV"),
 
-  GOOGLE_API_KEY: requiredEnv("GOOGLE_API_KEY"),
-  GROQ_API_KEY: requiredEnv("GROQ_API_KEY"),
-
   REDIS_URL: requiredEnv("REDIS_URL"),
   MONGODB_URI: requiredEnv("MONGODB_URI"),
 
-  DB_NAME: requiredEnv("DB_NAME"),
-  COLLECTION_NAME: requiredEnv("COLLECTION_NAME"),
+  GOOGLE_API_KEY: requiredEnv("GOOGLE_API_KEY"),
+  EMBEDDING_MODEL: requiredEnv("EMBEDDING_MODEL"),
+
+  GROQ_API_KEY: requiredEnv("GROQ_API_KEY"),
+  TEXT_MODEL: requiredEnv("TEXT_MODEL"),
+
+  PINECONE_API_KEY: requiredEnv("PINECONE_API_KEY"),
   INDEX_NAME: requiredEnv("INDEX_NAME"),
 
-  EMBEDDING_MODEL: requiredEnv("EMBEDDING_MODEL"),
-  TEXT_MODEL: requiredEnv("TEXT_MODEL"),
-  PINECONE_API_KEY: requiredEnv("PINECONE_API_KEY")
+  CLERK_PUBLISHABLE_KEY: requiredEnv('CLERK_PUBLISHABLE_KEY'),
+  CLERK_SECRET_KEY: requiredEnv('CLERK_SECRET_KEY'),
+
+  DB_NAME:requiredEnv('DB_NAME')
+
 };
