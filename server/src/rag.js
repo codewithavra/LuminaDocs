@@ -56,6 +56,41 @@ async function textSplitting(document) {
 }
 
 // ==========================================
+// EMBED + UPSERT TO PINECONE
+// Every chunk is tagged with documentId + userId so retrieval
+// (and deletion) can be scoped to a single user's single document.
+// ==========================================
+export async function embedAndStore(chunks, { documentId, userId }) {
+  try {
+    const taggedChunks = chunks.map(
+      (chunk) =>
+        new Document({
+          pageContent: chunk.pageContent,
+          metadata: { ...chunk.metadata, documentId, userId },
+        })
+    );
+    await vectorStore.addDocuments(taggedChunks);
+    return taggedChunks.length;
+  } catch (error) {
+    throw new Error(`Failed to embed/store chunks: ${error.message}`);
+  }
+}
+
+// ==========================================
+// DELETE ALL VECTORS FOR A DOCUMENT
+// Used when a user deletes an uploaded document.
+// ==========================================
+export async function deleteDocumentVectors(documentId) {
+  try {
+    await vectorStore.pineconeIndex.deleteMany({
+      documentId: { $eq: documentId },
+    });
+  } catch (error) {
+    throw new Error(`Failed to delete vectors for document: ${error.message}`);
+  }
+}
+
+// ==========================================
 // INDEXING PIPELINE
 // ==========================================
 
