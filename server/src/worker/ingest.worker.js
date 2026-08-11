@@ -9,6 +9,17 @@ import { DocumentModel } from "../model/index.js";
 import { embedAndStore, loadPdfPages, textSplitting } from "../rag.js";
 import { getGridFSBucket } from "../config/gridfs.js";
 
+// ingest_worker.js — add this near the top, after other imports
+import http from "node:http";
+
+// Render's free Web Service tier requires listening on a port for health
+// checks. This worker doesn't serve real traffic - it just needs to
+// respond so Render considers the service healthy.
+const PORT = env.PORT || 10000;
+http
+  .createServer((_req, res) => res.end("worker ok"))
+  .listen(PORT, () => console.log(`Worker healthcheck listening on ${PORT}`));
+
 // worker is a separate process, so it needs its own Mongo connection
 
 // Use the database encoded in MONGODB_URI, matching the API server. Supplying
